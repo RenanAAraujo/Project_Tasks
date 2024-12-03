@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $userId = $_SESSION['user_id'];
     $status = 0;
     // Inserir a nova tarefa no banco de dados
-    $stmt = $pdo->prepare('INSERT INTO tasks (id_user, title, description, status) VALUES (?, ?, ?, ?)');
+    $stmt = $pdo->prepare('INSERT INTO tasks (id_user, title, description, status, date_creation) VALUES (?, ?, ?, ?, NOW())');
     if ($stmt->execute([$userId, $title, $description, $status])) {
         $_SESSION['update_task'] = "Adicionado com sucesso!";
     header('Location: ../src/views/tasks_view.php');

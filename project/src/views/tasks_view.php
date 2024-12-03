@@ -71,7 +71,11 @@ if (isset($_SESSION['update_task_error'])) {
                 <span class="task-title <?php echo $task['status'] ? 'completed' : ''; ?>"><?php echo htmlspecialchars($task['title']); ?></span>
                 <button class="task-detalhes-btn" onclick="toggleDescricao(<?php echo $task['id']; ?>)">Detalhes</button>
                 <div id="descricao-<?php echo $task['id']; ?>" class="task-descricao">
-                    <?php echo htmlspecialchars($task['description']); ?>
+               <?php $dataFormatada = date('d/m/Y H:i:s', strtotime($task['date_creation']));
+                echo "Data de criação: " . $dataFormatada; 
+                ?><br><br>
+                    <?php $description = htmlspecialchars($task['description']); 
+                    echo "Descrição: <br><br>".$description?>
                     <br><br>
                 </div>
                 <a href="../models/Task.php?id=<?php echo $task['id']; ?>" class="task-link">Editar</a>
